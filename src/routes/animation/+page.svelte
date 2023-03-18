@@ -1,28 +1,55 @@
 <script lang="ts">
-	let total: string = "";
+	import Image from "$lib/components/image.svelte";
 
-	async function load() {
-		const response = await fetch("/api/get-files", {
-			method: "GET",
-		});
+	let images: string[] = [];
+	let randomImage: string[] = [];
 
-		total = await response.json();
+	async function loadImage() {
+		const response = await fetch("/api/getImages");
+		console.log(response);
+		images = await response.json();
+	}
+
+	function genetateRandomList(size: number) {
+		let list = [];
+
+		for (let i = 0; i < size; i++) {
+			list.push(
+				images[
+					Math.floor(
+						Math.random() * images.length
+					)
+				]
+			);
+		}
+
+		return list;
+	}
+
+	async function main() {
+		await loadImage();
+		randomImage = genetateRandomList(50);
 	}
 </script>
 
-<div id="container" />
-{#await load()}
-	<p>Loading...</p>
-{:then}
-	{#each total as file}
-		<p>{file}</p>
-	{/each}
-{/await}
+<svelte:head>
+	<title>Animation</title>
+</svelte:head>
+
+<div id="container">
+	{#await main()}
+		<p>Loading...</p>
+	{:then}
+		{#each randomImage as image}
+			<Image src={image} />
+		{/each}
+	{/await}
+</div>
 
 <style>
 	#container {
-		height: 1080px;
-		width: 1920px;
+		height: 100%;
+		width: 100%;
 		position: absolute;
 		z-index: -1;
 	}
