@@ -2,6 +2,7 @@
 	export let src: string;
 	export let style: string = random_animation(5);
 	export let border: string = random_border(5);
+	export let rotate: string = "0deg";
 
 	function random_animation(max: number) {
 		let type_image = Math.floor(Math.random() * max);
@@ -24,7 +25,12 @@
 	}
 </script>
 
-<img {src} class="{style} {border}" alt="Game image" />
+<img
+	{src}
+	class="{style} {border}"
+	alt="Game image"
+	style="transform:rotate({rotate})"
+/>
 
 <style>
 	img {
@@ -33,7 +39,7 @@
 		border-radius: 0.5rem;
 		width: 230px;
 		animation-name: brightness_default;
-		animation-duration: 3s;
+		animation-duration: 5s;
 		animation-iteration-count: infinite;
 	}
 
