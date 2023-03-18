@@ -10,7 +10,6 @@
 
 	async function loadImage() {
 		const response = await fetch("/api/getImages");
-		console.log(response);
 		images = await response.json();
 	}
 

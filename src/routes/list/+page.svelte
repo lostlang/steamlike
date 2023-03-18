@@ -1,21 +1,18 @@
 <script lang="ts">
-	let total: string = "";
+	let images: string = "";
 
-	async function load() {
-		const response = await fetch("/api/get-files", {
-			method: "GET",
-		});
-
-		total = await response.json();
+	async function loadImage() {
+		const response = await fetch("/api/getImages");
+		images = await response.json();
 	}
 
 	import Image from "$lib/components/image.svelte";
 </script>
 
-{#await load()}
+{#await loadImage()}
 	<p>Loading...</p>
 {:then}
-	{#each total as file}
-		<Image src={file} />
+	{#each images as image}
+		<Image src={image} />
 	{/each}
 {/await}
