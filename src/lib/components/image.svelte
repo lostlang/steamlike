@@ -24,7 +24,7 @@
 	}
 </script>
 
-<img {src} class="{style} {border}" />
+<img {src} class="{style} {border}" alt="Game image" />
 
 <style>
 	img {
