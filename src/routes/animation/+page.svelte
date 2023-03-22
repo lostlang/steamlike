@@ -36,12 +36,13 @@
 				if (Math.random() < chance) {
 					randomGrid[i][j] = randomInList();
 				}
+				return
 			}
 		}
 	}
 
 	setInterval(() => {
-		swapImage(0.01);
+		swapImage(0.1);
 	}, 1000);
 </script>
 
@@ -91,11 +92,15 @@
 		margin-bottom: 50px;
 		animation-name: move_even;
 		animation-duration: 15s;
+		animation-delay: 2s;
 		animation-iteration-count: infinite;
 	}
 
 	.line:nth-of-type(odd) {
 		left: -185px;
+		animation-duration: 16s;
+		animation-delay: 1s;
+		animation-timing-function: cubic-bezier(0.5, -1, 0.2, -1);
 		animation-name: move_odd;
 	}
 

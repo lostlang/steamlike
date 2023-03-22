@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let src: string;
-	export let style: string = random_animation(5);
+	export let style: string = random_animation(4);
 	export let border: string = random_border(5);
 	export let rotate: string = "0deg";
 
@@ -40,17 +40,21 @@
 		width: 230px;
 		animation-name: brightness_default;
 		animation-duration: 5s;
+		animation-delay: 2s;
 		animation-iteration-count: infinite;
+		animation-timing-function: ease-in-out;
 	}
 
 	.light {
 		filter: brightness(1.5);
 		animation-name: brightness_light;
+		animation-delay: 2.5s;
 	}
 
 	.dark {
 		filter: brightness(0.5);
 		animation-name: brightness_dark;
+		animation-delay: 1.5s;
 	}
 
 	.light_border {
