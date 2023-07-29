@@ -1,7 +1,8 @@
 {
   "name": "streamlike",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
+  "port": 8080,
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
